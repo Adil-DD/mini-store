@@ -1,8 +1,10 @@
 import { useLoginUserMutation } from "../../services/fakestoreApi"
-
+import { useDispatch } from "react-redux"
+import { setToken } from "../../store/authSlice"
 import { useState } from "react"
 
 export default function Login() {
+  const dispatch = useDispatch()
   const [loginUser,{data, error, isError,isLoading, isSuccess}] = useLoginUserMutation()
   const [form, setForm] = useState({username: "", password: ""}) 
 
@@ -11,6 +13,9 @@ export default function Login() {
     try {
       const result = await loginUser(form).unwrap()
       console.log("Login success:", result)
+      if (result.token) {
+        dispatch(setToken(result.token))
+      }
     } catch (err) {
       console.error("Login error:", err)
     }

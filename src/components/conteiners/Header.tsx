@@ -1,4 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/authSlice";
+import type { RootState } from "../../store/store";
 
 import Basket from "../ui/Basket"
 import AuthModal from "./AuthModal";
@@ -6,7 +9,12 @@ import { useState } from "react";
 
 export default function Header() {
   const [openModal, setOpenModal] = useState(false)
+  const dispatch = useDispatch()
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
+  const handleLogout = () => {
+    dispatch(logout())
+  }
 
   const linkClick = (isActive: boolean) => isActive ? "text-indigo-600 font-medium" : "text-gray-600 hover:text-indigo-600";
 
@@ -36,14 +44,21 @@ export default function Header() {
 
       <Basket/>
 
-      {/* <Link to='/login' className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">
-        Войти
-      </Link> */}
-      <button
-        onClick={()=> setOpenModal(true)}
-      >
-        Войти
-      </button>
+      {isAuthenticated ? (
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition"
+        >
+          Выйти
+        </button>
+      ) : (
+        <button
+          onClick={()=> setOpenModal(true)}
+          className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition"
+        >
+          Войти
+        </button>
+      )}
         {openModal === true && <AuthModal closeModal={()=>setOpenModal(false)} />}
       </div>
     </div>

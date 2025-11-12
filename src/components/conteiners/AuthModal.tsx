@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 import Login from "../pages/Login";
 import RegisterForm from "../pages/RegisterForm";
 
 export default function AuthModal({ closeModal }: { closeModal: () => void }) {
   const [tab, setTab] = useState<"login" | "register">("login")
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      closeModal()
+    }
+  }, [isAuthenticated, closeModal])
+  
   return (
     <div className="fixed flex inset-0 justify-center items-center bg-black/50 z-20">
       <div className="w-[500px] bg-white justify-center p-6 rounded-2xl relative shodow-md">
