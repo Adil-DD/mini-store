@@ -1,8 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import type { RootState } from "../../store/store";
-
 import Basket from "../ui/Basket"
 import AuthModal from "./AuthModal";
 import { useState } from "react";

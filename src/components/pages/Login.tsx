@@ -13,6 +13,7 @@ export default function Login() {
     try {
       const result = await loginUser(form).unwrap()
       console.log("Login success:", result)
+      console.log("Login token:", result.token)
       if (result.token) {
         dispatch(setToken(result.token))
       }

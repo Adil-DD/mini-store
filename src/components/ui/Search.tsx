@@ -1,10 +1,10 @@
 
 export default function Search() {
   return (
-    <div className="mr-30">
+    <div >
       <input
         placeholder="Поиск"
-        className="border w-[400px] rounded-lg"
+        className="border  rounded-lg"
       />
     </div>
   )
