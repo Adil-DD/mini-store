@@ -10,7 +10,7 @@ export default function Catalog() {
   // if(!data) return <p>Товар не загрузался </p>
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-4 pb-8 ">
       <div className="flex w-full justify-between ">
         <h1 className="text-2xl mb-4">Коталог всех товаров</h1>
         <Search />

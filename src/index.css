@@ -1,1 +1,45 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #111827;
+  }
+  .dark body {
+    background-color: #071028;
+    color: #e6eef8;
+  }
+}
+
+@layer components {
+  /* Backgrounds */
+  .bg-card { background-color: #ffffff; }
+  .dark .bg-card { background-color: #071a2b; }
+  .bg-accent { background-color: #4f46e5; }
+  .dark .bg-accent { background-color: #7c5cff; }
+
+  /* Modal backdrop */
+  .modal-backdrop { background-color: rgba(0,0,0,0.5); }
+  .dark .modal-backdrop { background-color: rgba(0,0,0,0.6); }
+
+  /* Texts */
+  .text-muted { @apply text-gray-600; }
+  .dark .text-muted { color: rgba(255,255,255,0.7); }
+
+n  /* Borders & dividers */
+  .border-divider { @apply border-gray-200; }
+  .dark .border-divider { border-color: rgba(255,255,255,0.06); }
+
+n  /* Buttons */
+  .btn-primary { background-color: #4f46e5;}
+  .btn-primary:hover { background-color: #4338ca;  color: #ffffff; }
+  .dark .btn-primary { background-color: #4F46E5; }
+  .dark .btn-primary:hover { background-color: #4338ca; }
+  .btn-destructive { @apply bg-red-600 text-white hover:bg-red-700; }
+  .dark .btn-destructive { background-color: #ff6b6b; }
+  .dark .btn-destructive:hover { background-color: #ff5a5a; }
+}
+

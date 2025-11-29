@@ -33,14 +33,14 @@ export default function Login() {
           placeholder="Username"
           type="text"
           onChange={(e) => setForm({...form, username: e.target.value})}
-          className="w-full border p-2 rounded"
+         className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
         <input
           name="password"
           placeholder="Password"
           type="password"
           onChange={(e) => setForm({...form, password: e.target.value})}
-          className="w-full border p-2 rounded"
+         className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
         <button
           className="bg-indigo-600 w-full rounded py-2 text-white hover:bg-indigo-700"

@@ -41,14 +41,14 @@ export default function RegisterForm() {
 
   return (
     <div className="max-w-md mx-auto p-6 ">
-      <h2 className="text-2xl font-bold mb-4 text-center">Регистрация</h2>
+      <h2 className=" text-2xl font-bold mb-4 text-center ">Регистрация</h2>
       <form onSubmit={handleSubmit} className="space-y-3">
-        <input name="email" type="email" placeholder="Email" className="w-full border p-2 rounded" onChange={handleChange} />
-        <input name="username" placeholder="Username" className="w-full border p-2 rounded" onChange={handleChange} />
-        <input name="password" type="password" placeholder="Пароль" className="w-full border p-2 rounded" onChange={handleChange} />
-        <input name="firstname" placeholder="Имя" className="w-full border p-2 rounded" onChange={handleChange} />
-        <input name="lastname" placeholder="Фамилия" className="w-full border p-2 rounded" onChange={handleChange} />
-        <input name="phone" placeholder="Телефон" className="w-full border p-2 rounded" onChange={handleChange} />
+        <input name="email" type="email" placeholder="Email" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
+        <input name="username" placeholder="Username" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
+        <input name="password" type="password" placeholder="Пароль" className="w-full border border-gray-300  p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
+        <input name="firstname" placeholder="Имя" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
+        <input name="lastname" placeholder="Фамилия" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
+        <input name="phone" placeholder="Телефон" className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-200" onChange={handleChange} />
 
         <button
           type="submit"

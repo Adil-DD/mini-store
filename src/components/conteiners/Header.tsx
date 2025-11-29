@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import type { RootState } from "../../store/store";
 import Basket from "../ui/Basket"
+import ThemeToggle from "../ui/ThemeToggle"
 import AuthModal from "./AuthModal";
 import { useState } from "react";
 
@@ -15,12 +16,12 @@ export default function Header() {
     dispatch(logout())
   }
 
-  const linkClick = (isActive: boolean) => isActive ? "text-indigo-600 font-medium" : "text-gray-600 hover:text-indigo-600";
+  const linkClick = (isActive: boolean) => isActive ? "text-indigo-600 font-medium" : "text-muted hover:text-indigo-600";
 
   
   return (<>
-  <div className="bg-white shadow-sm sticky top-0 z-10">
-    <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+  <div className="bg-card shadow-sm sticky top-0 z-10">
+    <div className="container mx-auto px-4 py-3 flex justify-between items-center text-default">
       <div className="flex items-center">
         <h1 className="text-2xl font-bold text-indigo-600">MiniStore</h1>
 
@@ -41,19 +42,22 @@ export default function Header() {
       </div>
 
 
-      <Basket/>
+      <div className="flex items-center">
+        <Basket/>
+        <ThemeToggle />
+      </div>
 
       {isAuthenticated ? (
         <button
           onClick={handleLogout}
-          className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition"
+          className="btn-destructive px-5 py-2 rounded-full transition"
         >
           Выйти
         </button>
       ) : (
         <button
           onClick={()=> setOpenModal(true)}
-          className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition"
+          className="btn-primary px-5 py-2 rounded-full transition"
         >
           Войти
         </button>

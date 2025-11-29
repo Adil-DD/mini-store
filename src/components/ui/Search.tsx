@@ -1,7 +1,7 @@
 
 export default function Search() {
   return (
-    <div >
+    <div className="flex items-center">
       <input
         placeholder="Поиск"
         className="border  rounded-lg"
