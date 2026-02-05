@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../store/cartSlice";
 import { useParams } from "react-router-dom";
 import { useGetStaffProductQuery } from "../../services/fakestoreApi";
 import type { AllProduct } from "../ui/ListProduct";
@@ -12,6 +14,8 @@ export default function ProductDetail(): JSX.Element {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [zoomPosition, setZoomPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isZoomed, setIsZoomed] = useState(false);
+  const [quantity, setQuantity] = useState<number>(1);
+  const dispatch = useDispatch();
 
   if (isLoading) return <p className="container mx-auto p-6">Загрузка...</p>;
   if (isError) return <p className="container mx-auto p-6">Ошибка загрузки товара</p>;
@@ -110,14 +114,14 @@ export default function ProductDetail(): JSX.Element {
             <div className="mt-6">
               <label className="text-muted text-sm mb-2 block">Количество</label>
               <div className="flex items-center gap-2">
-                <button className="px-3 py-1 border rounded">-</button>
-                <div className="px-4 py-1 border rounded">1</div>
-                <button className="px-3 py-1 border rounded">+</button>
+                <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="px-3 py-1 border rounded">-</button>
+                <div className="px-4 py-1 border rounded">{quantity}</div>
+                <button onClick={() => setQuantity(q => q + 1)} className="px-3 py-1 border rounded">+</button>
               </div>
             </div>
 
             <button
-              onClick={() => alert("Добавить в корзину — пока заглушка")}
+              onClick={() => dispatch(addItem({ id: product.id, title: product.title, price: product.price, image: product.image, quantity }))}
               className="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded transition"
             >
               Добавить в корзину

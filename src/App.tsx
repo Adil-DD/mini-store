@@ -5,6 +5,8 @@ import Home from '../src/components/pages/Home'
 // import RegisterForm from './components/pages/RegisterForm'
 import Catalog from './components/pages/Catalog'
 import ProductDetail from './components/pages/ProductDetail'
+import About from './components/pages/About'
+import Contacts from './components/pages/Contacts'
 
 function App() {
   const router = createBrowserRouter([{
@@ -33,6 +35,14 @@ function App() {
       {
         path:"/product/:id",
         element: <ProductDetail/>
+      },
+      {
+        path:"/about",
+        element: <About/>
+      },
+      {
+        path:"/contacts",
+        element: <Contacts/>
       }
     ]
   }])
